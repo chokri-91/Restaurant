@@ -1,0 +1,30 @@
+<form method="POST" class="generic-form">
+
+	<?php if(isset($errorMessage)):?>
+		<article class="error-message">
+			<?= $errorMessage ?>
+		</article>
+	<?php endif;?>
+
+	<h2> Se connecter avec un compte utilisateur</h2>
+
+    <fieldset>
+	<legend>Identité et coordonnées</legend>
+        <table>
+				<tr>
+					<td><label>E-mail</label></td>
+					<td><input type="email" name="email" value="<?=$email?>"/> </td><br><br>
+				</tr>
+				<tr>
+					<td><label>Mot de passe</label></td>
+					<td><input type="password" name="password" value=""/></td>
+				</tr>
+
+        </table><br>
+    </fieldset>
+
+  
+    <button type="submit" value="Envoyer">Connexion </button>  
+    <button type="reset" value="Annuler">Annuler </button>
+			
+</form>

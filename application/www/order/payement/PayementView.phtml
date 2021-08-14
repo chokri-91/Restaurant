@@ -1,0 +1,57 @@
+    <h2>Payer la commande</h2>
+
+    <div> <?= $user['FirstName']?> <?= $user['LastName']?> </div>
+    <div> <?= $user['Address'] ?> </div>
+
+
+    <table class="generic-table meal-list">
+        <caption> Récapitulatif de la commande</caption>
+
+        <thead>
+            <tr>
+                <th> Nom</th>
+                <th> Quantité</th>
+                <th> Prix Unitaire</th>
+                <th> Prix Total</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            <?php foreach($orderLine as $element): ?>
+
+                <tr>
+                    <td> <img src="<?= $wwwUrl ?>/images/meals/<?= $element['Photo'] ?>"/> <?= $element['Name']?> </td>
+                    <td> <?= $element['QuantityOrdered'] ?> </td>
+                    <td> <?= $element['PriceEach'] ?> </td>
+                    <td> <?= $element['PriceEach'] * $element['QuantityOrdered'] ?> </td>
+                </tr>
+
+            <?php endforeach;?>
+
+        </tbody>
+
+        <tfoot>
+                <tr>
+                    <td colspan="3"> Total HT </td>
+                    <td> <?= $order['TotalAmount'] ?> </td>
+                </tr>
+                <tr>
+                    <td colspan="3"> TVA(20%) </td>
+                    <td> <?= $order['TotalAmount'] * 0.2 ?> </td>
+                </tr>
+                <tr>
+                    <td colspan="3"> Total TTC </td>
+                    <td> <?= $order['TotalAmount'] + $order['TotalAmount'] * 0.2 ?> </td>
+                </tr>
+        </tfoot>
+    </table><br>
+
+    <small> Commandé le : <?= $order['CreationTimestamp'] ?> </small>
+
+    <br><br>
+<form class="order-form" action="<?=$requestUrl?>/order/payement" class="generic-form" method="POST">
+    <input type="submit" id="validate" class="button button-primary" value="Payer"/>
+    <a  href="" class="button button-cancel">Annuler</a>
+</form>

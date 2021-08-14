@@ -1,0 +1,57 @@
+<!-- <a href="<?= $requestUrl ?>/meal">Menu</a> -->
+	<fieldset>
+	<legend>Historique des commandes</legend>
+	<table class="generic-table">
+		<thead>
+			<tr>
+				<th>Numéro Commande</th>
+				<th>Numéro User</th>
+				<th>Date Création</th>
+				<th>Date Succès</th>
+				<th>TVA</th>
+				<th>Montant TVA</th>
+				<th>Total</th>
+			</tr>
+		</thead>
+		<tbody>
+		<?php foreach ($orders as $order): ?>
+			<tr>
+				<td>							
+					<?= $order['Id'] ?>
+				</td>
+				<td>
+					<?= $order['User_Id'] ?>
+				</td>
+				<td>
+					<?= $order['CreationTimestamp'] ?>
+				</td>
+				
+				<td>
+					<?php if($order['CompleteTimestamp']==NULL): ?>
+                    <?= '-' ?>
+                    <?php else:?>
+					<?= $order['CompleteTimestamp'] ?>
+					<?php endif;?>
+					
+				</td>
+
+				<td>
+					<?= $order['TaxRate'] ?> %
+				</td>
+
+				<td>
+					<?= $order['TaxAmount'] ?> €
+				</td>
+
+				<td>
+					<?php if($order['TotalAmount']==NULL): ?>
+                    <?= '-' ?>
+                    <?php else:?>
+					<?= $order['TotalAmount'] ?> €
+					<?php endif;?>
+				</td>
+			</tr>
+			<?php endforeach; ?>
+		</tbody>
+	</table>
+</fieldset>

@@ -1,0 +1,32 @@
+<form method="POST" class="generic-form">
+
+    <fieldset>
+            <legend>Liste des utilisateurs !</legend>
+            
+            <table class="generic-table">
+                <thead>
+                    
+                    <th>Administrateur</th>
+                    <th>Nom et prénom</th>
+                    <th>Email</th>
+                    <th>Téléphone</th>
+                    <th>Supprimer</th>
+                </thead>
+
+                <tbody>
+            
+                    <?php foreach($allUsers as $user): ?>
+                        <tr>
+                            <td> <input type="checkbox" name="checkAdmin[]" value="<?=$user['Id']?>" <?php if($user['Admin']==1):?> <?= 'checked' ?><?php endif;?>> <?=$user['Id']?> </td>
+                            <td> <?=$user['FirstName'].' '. $user['LastName']?> </td>
+                            <td> <?=$user['Email']?> </td>
+                            <td> <?=$user['Phone']?> </td>
+                            <td> <a href="<?= $requestUrl ?>/admin/user?id=<?=$user['Id']?>"> <i class="fas fa-trash-alt"></i> </a></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>		
+            </table>
+    </fieldset>
+
+    <button type="submitt" class="button button-primary"> Valider </button>
+</form>

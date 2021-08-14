@@ -1,0 +1,48 @@
+<h2> Ajout d'un produit alimentaire au catalogue </h2>
+<form method="POST" class="generic-form" enctype="multipart/form-data">
+    <fieldset>
+        <legend>Caractéristiques</legend>
+        
+        <div> <label>Nom: </label> <input type="text" name="nom" /> </div><br>
+        
+        <div><label>Description: </label><textarea name="description" rows="5" cols="24" value=""> </textarea></div><br><br>
+
+        <div> <label>Photo: </label><input type="file" name="photo" /> </div>
+    
+
+    </fieldset><br><br>
+
+    <fieldset>
+
+        <legend>Approvisionnement</legend>
+
+
+            <div> <label>Stock initial: </label> <input type="text" name="stock" /> </div><br>
+            
+            <div><label>Prix d'achat: </label><input type="text" name="achat"/> €</div><br><br>
+
+            <div> <label>Prix de vente: </label><input type="text" name="vente"/> €</div>
+
+    </fieldset><br>
+    <button class="button button-primary" type="submit" value="Envoyer">Ajouter </button>  
+    <button class="button button-cancel" type="reset" value="Annuler">Annuler </button>
+
+</form><br><br>
+
+
+<form method="POST" class="generic-form">
+
+    <fieldset>
+        <legend>Retirer articles</legend>
+        <?php foreach($mealsList as $meal):?>
+
+            <ul> <li> <?=$meal['Name']?> <span style="float:right;"><?=$meal['SalePrice']?> <input type="checkbox" name="checkMeal[]" value="<?=$meal['Id']?>"> </span > </li> 
+            
+
+        <?php endforeach;?> 
+    </fieldset><br><br>
+
+    <button class="button button-primary" type="submit" value="Envoyer">Supprimer </button>  
+    <button class="button button-cancel" type="reset" value="Annuler">Annuler </button>
+      
+</form>

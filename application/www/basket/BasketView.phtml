@@ -1,0 +1,30 @@
+ <legend>Récapitulatif de la commande</legend>
+ <?php if(empty($items)):?>
+    <p class="basket-empty">Votre panier est vide pour le moment! </p>
+ <?php else:?>   
+    <table class="generic-table" >  
+
+        <thead>
+
+            <th>Quantité</th>
+            <th>Produit</th>
+            <th>Prix unitaire</th>
+            <th>Prix total</th>
+            <th>Supprimer</th>
+
+        </thead>
+
+        <tbody>
+        <?php foreach($items as $item) :?>
+
+            <tr>    
+                <td><?=$item['quantity']?></td>
+                <td><?=$item['name']?></td>
+                <td><?=$item['price']?></td>
+                <td><?=$item['price'] * $item['quantity']?> </td>
+                <td> <button class="delete" data-index="<?= $item['id'] ?>" ><i class="far fa-trash-alt"></i> </button></td>
+            <tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+<?php endif;?>

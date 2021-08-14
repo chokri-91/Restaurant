@@ -1,0 +1,59 @@
+<h2> Panneau d'administration </h2>
+<fieldset>
+    <legend>Historique de commandes</legend>
+            
+    <table class="generic-table">
+        <thead>
+                    
+            <th>Num Comm</th>
+            <th>Num User</th>
+            <th>Date Créa</th>
+            <th>Date Succ</th>
+            <th>Tva</th>
+            <th>Prix Tva</th>
+            <th>Total</th>
+        </thead>
+
+        <tbody>
+            
+            <?php foreach($orders as $order): ?>
+                <tr>
+                            
+                    <td> <a href="<?= $requestUrl ?>/admin/order?id=<?=$order['Id']?>"> <?=$order['Id']?> </a> </td>
+                    <td> <a href="<?= $requestUrl ?>/admin/order?id=<?=$order['User_Id']?>"><?=$order['User_Id']?> </a> </td>
+                    <td> <?=$order['CreationTimestamp']?> </td>
+                    <td> <?=$order['CompleteTimestamp']?> </td>
+                    <td> <?=$order['TaxRate']?> </td>
+                    <td> <?=$order['TaxAmount']?> </td>
+                    <td> <?=$order['TaxAmount']?> </td>
+
+                </tr>
+            <?php endforeach; ?>
+        </tbody>		
+    </table>
+</fieldset>
+
+<fieldset>
+        <legend>Détails de la commande</legend>
+            
+        <table class="generic-table">
+
+            <thead>
+                            
+                <th>Quantité</th>
+                <th>Produit</th>
+                <th>Prix unitaire</th>
+                <th>Prix total</th>
+            </thead>
+            <tbody>
+                <?php foreach($orderDetails as $order): ?>
+                    <tr>
+                        <td> <?= $order['QuantityOrdered'] ?> </td>
+                        <td> <?= $order['Name'] ?> </td>
+                        <td> <?= $order['SalePrice'] ?> </td>
+                        <td> <?= $order['SalePrice'] * $order['QuantityOrdered'] ?> </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+</fieldset>

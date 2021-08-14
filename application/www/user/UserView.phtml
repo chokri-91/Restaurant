@@ -1,0 +1,109 @@
+<form data-validate method="POST" class="generic-form">	
+	<aside class="error-message hidden">
+		<h3>Il y a <em class="total-errors">1</em> erreur(s)</h3>
+		<p>
+			<?php if(isset($errorMessage)):?>
+				<?= $errorMessage ?>	
+			<?php endif;?>
+		</p>
+	</aside>
+		<fieldset>
+			<legend>Identité et coordonnées</legend>
+		
+			<table>
+				<tr>
+					<td><label>Nom</label></td>
+					<td><input data-required data-name="Nom" type="text" name="nom" value="<?=$nom?>"/> </td><br>
+				</tr>
+				<tr>
+					<td><label>Prenom</label></td>
+					<td><input data-required data-name="Prénom" type="text" name="prenom" value="<?=$prenom?>"/></td>
+				</tr>
+					
+				<tr>
+
+					<td>Date de naissance </td>
+
+					<td>
+						<select id="day" name="day">
+								<?php for($i=1; $i<32; $i++):?>
+									<option><?=$i?></option>
+								<?php endfor; ?>
+						</select> 
+						
+
+					<!-- (condition)?valeur_si_la_condition_est_vraie:valeur_si_la_condition_est_fausse -->
+						<select id="month" name="month">
+							<option value="1">Janvier</option>
+							<option value="2" <?= ($month='2')?'selected':''?>>Février</option>
+							<option value="3" <?= ($month='3')?'selected':''?>>Mars</option>
+							<option value="4" <?= ($month='4')?'selected':''?>>Avril</option>
+							<option value="5" <?= ($month='5')?'selected':''?>>Mai</option>
+							<option value="6" <?= ($month='6')?'selected':''?>>Juin</option>
+							<option value="7" <?= ($month='7')?'selected':''?>>Juillet</option>
+							<option value="8" <?= ($month='8')?'selected':''?>>Août</option>
+							<option value="9" <?= ($month='9')?'selected':''?>>Septembre</option>
+							<option value="10" <?= ($month='10')?'selected':''?>>Octobre</option>
+							<option value="11" <?= ($month='11')?'selected':''?>>Novembre</option>
+							<option value="12" <?= ($month='12')?'selected':''?>>Décembre</option>
+						</select>
+						
+					
+							<select name="year">
+								<?php for($i=1945;$i<date("Y")-17;$i++):?>
+									<option><?=$i?></option>
+								<?php endfor;?>
+							</select>   
+					
+					</td>
+				</tr>
+
+				<tr>
+					<td><label>Adresse</label></td>
+					<td><input data-required data-type="text" data-name="Adresse" type="textarea" name="adress" value="<?=$adress?>"/></td>
+				</tr>
+				
+				<tr>
+					<td><label>Ville</label></td>
+					<td><input data-required data-type="text" data-name="Ville" type="text" name="ville" value="<?=$ville?>"/></td>
+				</tr>
+
+				<tr>
+					<td><label>Code postal</label></td>
+					<td><input data-type="int" data-name="Code postale" type="text" name="codePostal" value="<?=$codePostal?>"/></td>
+				</tr>
+
+				<tr>
+					<td><label>Pays</label></td>
+					<td><input data-type="text" data-name="Pays" type="text" name="pays" value="<?=$pays?>"/></td>
+				</tr>
+
+				<tr>
+					<td><label>Télephone</label></td>
+					<td><input data-required data-type="int" data-name="Numéro de téléphone" type="text" name="phoneNumber" value="<?=$phoneNumber?>"/></td>
+				</tr>
+
+			</table>
+		</fieldset>
+
+		<fieldset>
+
+			</table>
+				<tr>
+					<td><label>Email</label></td>
+					<td><input data-required type="email" name="mail" value="<?=$mail?>"/></td>
+				</tr><br>
+			
+				<tr>
+					<td><label>Mot de passe</label></td>
+					<td><input data-required data-min-length="8" data-name="Password" type="password" name="password" value="<?=$password?>"/></td>
+				</tr><br>
+				<tr>
+					<td colspan="2"><input type="submit" value="Envoyer"/>  <input type="reset" value="Annuler"/></td>
+				</tr>
+			</table>
+
+		</fieldset>
+
+</form>
+

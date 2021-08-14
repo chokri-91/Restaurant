@@ -1,0 +1,66 @@
+<h2> Réservation d'une table</h2>
+<form data-validate class="generic-form" method="POST">
+
+		
+			<?php if(isset($errorMessage)):?>
+                <aside class="error-message">
+                    <p>	<?= $errorMessage ?>	</p>
+                </aside>	
+			<?php endif;?>
+	
+	
+<fieldset> 
+<legend> Informations </legend>
+
+<label>date de Réservation: </label> 
+    <select id="day" name="day">
+        <?php for($i=1; $i<=31; $i++):?>
+            <option><?=$i?></option>
+        <?php endfor; ?>
+    </select>
+    <select id="month" name="month">
+        <option value="1">Janvier</option>
+        <option value="2">Février</option>
+        <option value="3">Mars</option>
+        <option value="4">Avril</option>
+        <option value="5">Mai</option>
+        <option value="6">Juin</option>
+        <option value="7">Juillet</option>
+        <option value="8">Août</option>
+        <option value="9">Septembre</option>
+        <option value="10">Octobre</option>
+        <option value="11">Novembre</option>
+        <option value="12">Décembre</option>
+    </select>
+
+    <select id="year" name="year">
+        <option>2021</option>
+        <option>2022</option>
+    </select> 
+    
+    <strong> heure : </strong>
+    <select id="hour" name="hour">
+    <?php for($i=12; $i<24; $i++):?>
+            <option><?=$i?></option>
+        <?php endfor; ?>
+    </select>
+    <select id="minutes" name="minutes">
+        <option>00</option>
+        <option>15</option>
+        <option>30</option>
+        <option>45</option>
+    </select> <br><br>
+
+    <label>Nombre de places: </label> 
+    
+    <select id="seats" name="seats">
+        <?php for($i=1; $i<9; $i++):?>
+            <option><?=$i?></option>
+        <?php endfor; ?>
+    </select>
+    </fieldset> <br><br>
+
+    <button class="button-cancel" type="submitt">Réserver </button>
+    <button class="button-primary" type="submitt">Annuler </button>
+
+</form>

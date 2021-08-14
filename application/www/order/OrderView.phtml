@@ -1,0 +1,33 @@
+<h2> Passer une commande </h2>
+<form id="order-form" class="generic-form" data-order-step="run">
+    <fieldset>
+        <legend>Ajouter un article</legend>
+        
+        <label>Nom: </label> 
+       
+            <select id="meal" name="nom" > 
+            <?php foreach($meals as $meal) :?>
+                <option value="<?=$meal['Id']?>"><?=$meal['Name']?> </option>
+                <?php endforeach; ?>
+            </select><br><br>
+
+        <ul class="meal-details no-left-right" id="meal-details"> 
+            <li> <img src="" alt=""/> </li>
+            <li id="description"> </li>
+            <li> Prix: <strong id="price"></strong></li> 
+        </ul><br><br>
+        
+        <div> <label>Quantité: </label><input value="1" class="quantity" type="number" name="quantity" /> </div><br><br>
+    
+        <button id="add" class="button button-primary" type="submit">Ajouter </button> 
+    </fieldset><br><br>
+
+    <fieldset id="order-summary"></fieldset>
+</form>
+
+<button id="validate-order" class="button button-primary" disabled> Valider la commande</button>
+<button class="button button-cancel" type="reset" value="Annuler">Annuler </button>
+
+<!-- Classes JavaScript du formulaire de commande -->
+<script src="<?= $wwwUrl ?>/js/classes/Basket.class.js"></script>
+<script src="<?= $wwwUrl ?>/js/classes/OrderForm.class.js"></script>
